@@ -31,23 +31,6 @@ public class Product implements Comparable<Product> {
         } else this.title = title;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        if (category.isEmpty()) {
-            throw new IllegalArgumentException("Please enter a category.");
-        } else
-            for (String validCategory : storeCategories) {
-                if (validCategory.equals(category)) {
-                    this.category = category;
-                    return;
-                }
-            }
-        throw new IllegalArgumentException("Please enter a store category.");
-    }
-
     public String getAuthor() {
         return author;
     }

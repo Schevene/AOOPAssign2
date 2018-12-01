@@ -31,14 +31,17 @@ public class Inventory {
      * A method to return a list of the categories
      * @return
      */
-    public Set<String> getCategories()
+    public List<String> getCategories()
     {
-        return inventory.keySet();
+        ArrayList<String> list = new ArrayList<>();
+        list.addAll(inventory.keySet());
+        return list;
     }
 
     /**
+     * A method to add a product to the LinkedList of products,
+     * relating it to a category
      * @param product
-     * add a product to the LinkedList of products
      */
     public void addProductsToInventory(String category, Product product)
     {
@@ -49,8 +52,25 @@ public class Inventory {
         inventory.get(category).add(product);
     }
 
-    public LinkedList<Product> getProducts(Product product)
+    /**
+     * A method to return a LinkedLIst of all products
+     * @return
+     */
+    public Collection getProducts()
     {
-        return products;
+        return inventory.values();
+    }
+
+    public LinkedList<LinkedList<Product>> getUniqueCategory(String chosenCategory)
+    {
+        LinkedList<LinkedList<Product>> productsOfCategory = new LinkedList<>();
+        for (String category: inventory.keySet())
+        {
+            if(chosenCategory == category)
+            {
+                productsOfCategory.add(inventory.get(category));
+            }
+        }
+        return productsOfCategory;
     }
 }
