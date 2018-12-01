@@ -11,18 +11,20 @@ import java.util.TreeMap;
 public class Test {
     public static void main(String[] args) {
         Inventory inventory = new Inventory();
+        String cat1 = "Superhero";
+        String cat2 = "Indie";
 
-        inventory.addCategory("Superhero");
-        inventory.addCategory("Indie");
+        inventory.addCategory(cat1);
+        inventory.addCategory(cat2);
 
         JFXPanel jfxPanel = new JFXPanel();
 
-        inventory.addProductsToInventory("Superhero", new Product("title", "author", "artist", "hardcover",
+        inventory.addProductsToInventory(cat1, new Product("title", "author", "artist", "hardcover",
                 34.99, 33, new Image("Images/MM24.jpg")));
-        inventory.addProductsToInventory("Indie", new Product("asda", "author", "artist", "trade",
+        inventory.addProductsToInventory(cat2, new Product("asda", "author", "artist", "trade",
                 53.00, 234, new Image("images/MM24.jpg")));
-        inventory.addProductsToInventory("Superhero", new Product("gasfda", "author", "artist", "trade",
-                53.00, 234, new Image("images/MM24.jpg")));
+        inventory.addProductsToInventory(cat1, new Product("gasfda", "author", "artist", "issue",
+                67.00, 54, new Image("images/MM24.jpg")));
 
         for (String category : inventory.getCategories()) {
             System.out.printf("%s ", category);
