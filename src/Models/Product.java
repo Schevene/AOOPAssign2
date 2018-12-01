@@ -2,7 +2,7 @@ package Models;
 
 import javafx.scene.image.Image;
 
-public class Product implements Comparable<Product> {
+public class Product{
     private String title, category, author, artist, format;
     private double price;
     private int unit;
@@ -108,14 +108,5 @@ public class Product implements Comparable<Product> {
     @Override
     public String toString() {
         return this.title + " has " + this.unit + " units in stock for " + this.price + "each.\n";
-    }
-
-    @Override
-    public int compareTo(Product product) {
-        if (category.equalsIgnoreCase(product.category)) {
-                return 0;
-            }
-            else
-                return this.category.compareTo(product.category);
     }
 }

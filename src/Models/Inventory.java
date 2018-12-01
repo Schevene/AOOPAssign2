@@ -2,7 +2,7 @@ package Models;
 
 import java.util.*;
 
-public class Inventory {
+public class Inventory implements Comparable {
     TreeMap<String, LinkedList> inventory;
 
     public Inventory()
@@ -57,6 +57,11 @@ public class Inventory {
         return inventory.values();
     }
 
+    /**
+     * A method to return a list of every product in a category
+     * @param chosenCategory
+     * @return
+     */
     public LinkedList<LinkedList<Product>> getUniqueCategory(String chosenCategory)
     {
         LinkedList<LinkedList<Product>> productsOfCategory = new LinkedList<>();
@@ -68,5 +73,10 @@ public class Inventory {
             }
         }
         return productsOfCategory;
+    }
+
+    @Override
+    public int compareTo(Object product) {
+        return 0;
     }
 }
