@@ -2,8 +2,8 @@ package Models;
 
 import java.util.*;
 
-public class Inventory implements Comparable {
-    TreeMap<String, LinkedList> inventory;
+public class Inventory {
+    private TreeMap<String, LinkedList> inventory;
 
     public Inventory()
     {
@@ -43,6 +43,7 @@ public class Inventory implements Comparable {
         if(!inventory.containsKey(category))
         {
             addCategory(category);
+            inventory.get(category).add(product);
         }
         else
             inventory.get(category).add(product);
@@ -73,10 +74,5 @@ public class Inventory implements Comparable {
             }
         }
         return productsOfCategory;
-    }
-
-    @Override
-    public int compareTo(Object product) {
-        return 0;
     }
 }

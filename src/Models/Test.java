@@ -29,6 +29,9 @@ public class Test {
         for (String category : inventory.getCategories()) {
             System.out.printf("%s ", category);
         }
+
+        LinkedList list = inventory.getUniqueCategory(cat1);
+        System.out.println(list);
     }
 }
 //        /**
