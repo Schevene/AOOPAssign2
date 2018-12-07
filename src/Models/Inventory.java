@@ -53,9 +53,14 @@ public class Inventory {
      * A method to return a LinkedLIst of all products
      * @return
      */
-    public Collection getProducts()
+    public LinkedList<Product> getProducts()
     {
-        return inventory.values();
+        LinkedList<Product> products = new LinkedList<>();
+        for(String category: inventory.keySet())
+        {
+            products.addAll(inventory.get(category));
+        }
+        return products;
     }
 
     /**
@@ -63,16 +68,8 @@ public class Inventory {
      * @param chosenCategory
      * @return
      */
-    public LinkedList<LinkedList<Product>> getUniqueCategory(String chosenCategory)
+    public LinkedList<Product> getUniqueCategory(String chosenCategory)
     {
-        LinkedList<LinkedList<Product>> productsOfCategory = new LinkedList<>();
-        for (String category: inventory.keySet())
-        {
-            if(chosenCategory == category)
-            {
-                productsOfCategory.add(inventory.get(category));
-            }
-        }
-        return productsOfCategory;
+       return inventory.get(chosenCategory);
     }
 }

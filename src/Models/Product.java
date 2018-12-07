@@ -171,6 +171,6 @@ public class Product{
 
     @Override
     public String toString() {
-        return this.title + " has " + this.unit + " units in stock for " + this.price + "each.\n";
+        return this.title + "  " + this.unit + " units for " + this.price;
     }
 }
