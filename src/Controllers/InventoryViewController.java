@@ -29,7 +29,7 @@ public class InventoryViewController implements Initializable {
     private ListView<Product> productListView;
 
     @FXML
-    private ChoiceBox<String> categoryChoiceBox;
+    private ComboBox<String> categoryComboBox;
 
     @FXML
     private RadioButton priceDescRButton;
@@ -85,8 +85,8 @@ public class InventoryViewController implements Initializable {
         //set imageView to first selected product
         updateViewWithSelected();
 
-        //Populate choiceBox with all categories, chosen category should update the category total label
-        categoryChoiceBox.getItems().addAll(inventory.getCategories());
+        //Populate comboBox with all categories, chosen category should update the category total label
+        categoryComboBox.getItems().addAll(inventory.getCategories());
 
         //Set radio buttons to a toggle group
         sortGroup = new ToggleGroup();
@@ -103,11 +103,11 @@ public class InventoryViewController implements Initializable {
         //set the total category total to nothing until something is updated
         totalCatLabel.setText(" ");
 
-        //Change listener to choice box to listen for a change and activate
+        //Change listener to combo box to listen for a change and activate
         //method to update the total category label
-        categoryChoiceBox.setValue("Please select Category");
-        categoryChoiceBox.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> updateCatLabel(categoryChoiceBox.getSelectionModel().getSelectedItem()));
+        categoryComboBox.setPromptText("Please Select Category");
+        categoryComboBox.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> updateCatLabel(categoryComboBox.getSelectionModel().getSelectedItem()));
 
         //call method to sell one item of currently selected product when the button is pressed
         //sellButton
@@ -137,12 +137,17 @@ public class InventoryViewController implements Initializable {
         return sum;
     }
 
+    /**
+     * Method to update the category total label text when a category is selected from the combo box
+     * @param chosenCategory
+     */
     public void updateCatLabel(String chosenCategory)
     {
         LinkedList<Product> productOfCategory = inventory.getUniqueCategory(chosenCategory);
         double catSum = productOfCategory.stream()
                 .mapToDouble(product -> product.getPrice() * product.getUnit())
                 .sum();
-        totalCatLabel.setText(catSum + " ");
+
+        totalCatLabel.setText(String.format("%.2f",catSum));
     }
 }
