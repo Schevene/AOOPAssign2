@@ -171,6 +171,6 @@ public class Product{
 
     @Override
     public String toString() {
-        return this.title + "  " + this.unit + " units for " + this.price;
+        return this.title + "  " + this.unit + " units for $" + this.price;
     }
 }
